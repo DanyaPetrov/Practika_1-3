@@ -1,16 +1,13 @@
-# Используем базовый образ Ubuntu
 FROM ubuntu:latest
 
-# Устанавливаем необходимые зависимости
-RUN apt-get update && apt-get install -y \
-    dpkg \
-    && rm -rf /var/lib/apt/lists/*
+# Установим необходимые зависимости
+RUN apt-get update && apt-get install -y dpkg
 
-# Копируем .deb пакет в контейнер
-COPY myprogram.deb /tmp/myprogram.deb
+# Скопируем .deb пакет из артефакта
+COPY myprogram.deb /tmp/
 
-# Устанавливаем .deb пакет
-RUN dpkg -i /tmp/myprogram.deb || apt-get install -f -y
+# Установим пакет
+RUN dpkg -i /tmp/myprogram.deb
 
-# Указываем команду для запуска вашего ПО
-CMD ["lab", "--success-param"]
+# Указываем точку входа для контейнера
+ENTRYPOINT ["/usr/bin/lab"]
