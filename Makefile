@@ -5,7 +5,7 @@
 # Сборка программы
 build:
 	@echo "Сборка программы..."
-	go build -o lab ~Загрузки/michail-lab/cmd
+	go build -o lab ./cmd/lab
 
 # Запуск тестов
 test:
@@ -15,7 +15,7 @@ test:
 install:
 	@echo "zav"
 	go mod download
-# Очистка проекта
+
 clean:
 	@echo "Очистка временных файлов..."
 	rm -f lab
