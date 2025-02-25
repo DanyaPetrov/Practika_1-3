@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"michail-lab/internal/input"
+	"lasts-lab/internal/input"
 	"slices"
 )
 
 func main() {
-	// Ввод массива K
+	// Ввод массива K.
 	fmt.Print("Размер массива K> ")
 	var arrSizeK uint
 	_, err := fmt.Scanln(&arrSizeK)
