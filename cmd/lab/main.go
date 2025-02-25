@@ -45,7 +45,7 @@ func main() {
 		return
 	}
 
-	// Поиск наибольшего элемента в K, которого нет в L
+	// Поиск наибольшего элемента в K, которого нет в L.
 	maxVal := -1
 	for _, val := range arrK {
 		if !slices.Contains(arrL, val) && val > maxVal {

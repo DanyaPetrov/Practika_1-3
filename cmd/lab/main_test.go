@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-// Функция, которую мы тестируем
+// Функция, которую мы тестируем.
 func findMaxUniqueInK(K, L []int) int {
 	maxVal := -1
 	for _, val := range K {

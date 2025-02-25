@@ -9,7 +9,7 @@ build:
 
 # Запуск тестов
 test:
-	@echo "Запуск тестов..."
+	@echo "Запуск тестов.."
 	go test -v ./...
 
 install:
