@@ -47,8 +47,26 @@ jobs:
 
     - name: Test
       run: make test
+  package:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.24'
+
+    - name: Package .deb      
+      run: make deb
+    - name: deb artifact
+      uses: actions/upload-artifact@v4      
+      with:
+        name: deb-package_2        
+        path: myprogram.deb
   deploy:    
-    needs: build
+    needs: package
     runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v4      
