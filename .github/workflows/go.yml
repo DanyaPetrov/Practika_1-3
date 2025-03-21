@@ -1,3 +1,6 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
 name: Go
 
 on:
@@ -21,23 +24,21 @@ jobs:
     - name: Build
       run: make build
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-artifacts
-        path: ./bin/ # Укажите путь к скомпилированным файлам
+    - name: Test
+      run: make test
 
+    - name: Package .deb      
+      run: make deb
+    - name: deb artifact
+      uses: actions/upload-artifact@v4      
+      with:
+        name: deb-package_2        
+        path: myprogram.deb
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: build-artifacts
-        path: ./bin/
 
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -46,54 +47,27 @@ jobs:
 
     - name: Test
       run: make test
-
-  package:
-    needs: test
-    runs-on: ubuntu-latest
+  deploy:    
+    needs: build
+    runs-on: ubuntu-latest    
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: build-artifacts
-        path: ./bin/
-
-    - name: Package .deb
-      run: make deb
-
-    - name: Upload .deb artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: deb-package
-        path: myprogram.deb
-
-  deploy:
-    needs: package
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Download .deb artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: deb-package
-        path: .
-
-    - name: Build Docker image
-      run: |
-        docker build -t my-lab-app .
-
-    - name: Save Docker image as tar file
-      run: |
-        docker save -o my-lab-app.tar my-lab-app
-
-    - name: Upload Docker image as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: my-lab-app
-        path: my-lab-app.tar
-
-    - name: Run Docker container
-      run: |
-        docker run --rm my-lab-app --success
+      - uses: actions/checkout@v4      
+      - name: Download .deb artifact
+        uses: actions/download-artifact@v4        
+        with:
+          name: deb-package_2          
+          path: .
+      - name: Build Docker image        
+        run: |
+          docker build -t my-lab-app .          
+      - name: Run Docker container        
+        run: |
+          docker run --rm my-lab-app --success          
+      - name: Save Docker image as tar file        
+        run: |
+          docker save -o my-lab-app.tar my-lab-app
+      - name: Upload Docker image as artifact        
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-lab-app          
+          path: my-lab-app.tar
