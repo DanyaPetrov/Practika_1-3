@@ -5,7 +5,6 @@ import (
 	"lasts-lab/internal/input"
 	"slices"
 )
-
 func main() {
 	// Ввод массива K.
 	fmt.Print("Размер массива K> ")
