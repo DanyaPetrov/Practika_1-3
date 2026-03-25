@@ -3,6 +3,7 @@
 export DH_GOPKG := lasts-lab
 export DH_GOLANG_INSTALL := lasts-lab/cmd/lab
 export DH_GOLANG_EXCLUDES := testdata
+export DH_GOLANG_IGNORE_MISSING_SOURCES := 1
 
 %:
 	dh $@ --buildsystem=golang --with=golang
