@@ -10,3 +10,4 @@ export DH_GOLANG_IGNORE_MISSING_SOURCES := 1
 
 override_dh_dwz:
 
+override_dh_golang:
