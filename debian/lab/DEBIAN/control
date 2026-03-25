@@ -1,0 +1,12 @@
+Package: lab
+Version: 1.0-1
+Architecture: amd64
+Maintainer: Your Name <your.email@example.com>
+Installed-Size: 1677
+Section: utils
+Priority: optional
+Homepage: https://example.com
+Description: Utility to find maximum value in an array
+ This program reads an array and outputs the maximum value.
+ .
+ It is written in Go and uses efficient algorithms.

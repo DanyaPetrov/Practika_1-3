@@ -1,0 +1,3 @@
+misc:Built-Using=golang-1.26 (= 1.26.1-1longsleep2+jammy)
+misc:Depends=
+misc:Pre-Depends=
