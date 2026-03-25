@@ -9,6 +9,10 @@ MODULE := lab
 build:
 	go build -o $(MODULE) ./cmd/$(MODULE)
 
+test:
+	@echo "Запуск тестов..."
+	go test -v ./...
+
 # Сборка deb-пакета с использованием официальной инфраструктуры Debian
 deb:
 	dpkg-buildpackage -us -uc -b
