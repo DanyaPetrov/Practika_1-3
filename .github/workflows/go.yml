@@ -48,6 +48,11 @@ jobs:
       with:
         go-version: '1.24'
 
+    - name: Install debuild dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential debhelper dh-golang golang-go
+
     - name: Package .deb      
       run: make deb
     - name: deb artifact
