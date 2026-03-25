@@ -1,8 +1,0 @@
-43ec94e97e38bba7f52c30e8339a78bd  usr/bin/lab
-1c9854ed1580483579781f8291c8745f  usr/share/doc/lab/README.Debian
-3095bc0f1de5d194bfb04df9e0dab968  usr/share/doc/lab/changelog.Debian.gz
-50fbac1305127b777b1fd4b33abce095  usr/share/doc/lab/copyright
-431e37b0d41a3c8f45c725ed526b09cd  usr/share/gocode/src/lasts-lab/cmd/lab/main.go
-a563ea8bbe82e7a3d4f0dfdf088b5221  usr/share/gocode/src/lasts-lab/cmd/lab/main_test.go
-68f6310653fd9b870746d286c907e3da  usr/share/gocode/src/lasts-lab/go.mod
-ac6c5084b56a4539aa67dd185cff75f4  usr/share/gocode/src/lasts-lab/internal/input/input.go
